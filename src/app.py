@@ -21,7 +21,7 @@ df['Date'] = pd.to_datetime(df['Date'])
 weekly_layoffs = df.resample('W', on='Date')['Laid_Off_Count'].sum().reset_index()
 
 # Create Dash app
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, external_stylesheets=['styles.css'])
 server = app.server
 
 # Define CSS styles
@@ -31,7 +31,7 @@ header_style = {'textAlign': 'center', 'fontSize': '2em', 'margin': '20px', 'col
 footer_style = {'textAlign': 'center', 'padding': '20px 0', 'color': '#777'}
 
 body_style = {
-    'backgroundColor': '#f6f6f6',
+    #'backgroundColor': '#f6f6f6',
     'fontFamily': 'Arial, sans-serif',
     'textAlign': 'center'  # Add this line to center everything
 }
