@@ -22,6 +22,7 @@ weekly_layoffs = df.resample('W', on='Date')['Laid_Off_Count'].sum().reset_index
 
 # Create Dash app
 app = dash.Dash(__name__)
+server = app.server
 
 # Define CSS styles
 #body_style = {'backgroundColor': '#f6f6f6', 'fontFamily': 'Arial, sans-serif'}
