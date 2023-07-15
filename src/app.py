@@ -61,7 +61,7 @@ html.Div([
 """
 
 app.layout = html.Div(style=body_style, children=[
-    html.Header(html.H1("Recent Job Layoffs"), style=header_style),
+    html.Header(html.H1("On Recent Job Layoffs"), style=header_style),
     html.Main([
         html.P("The rise of artificial intelligence (AI) is starting yet again a significant transformation in various industries, automating many jobs. This technological advancement, while beneficial in many aspects, can lead to an increase in unemployment. In this article, we'll discuss recent job layoffs with two interactive plots and relate this to a discussion about the future directions of our current economic systems in a world with more and more automation at hand."),
         html.P("We'll start by looking at a sunburst plot that shows the top 10 industries in terms of total layoffs from 2020-2023. The data is given by layoffs.fyi and their work on tracking layoffs in various industries. In this plot, we can click on individual industries to see the top 10 companies in that industry. Big companies like Amazon, Meta, Google, Microsoft, and others lead the way. These companies often make use of extensive cost-cutting and restructuring to increase their profits. They are most likely to be the first ones to automate jobs and lay off employees."),
@@ -108,8 +108,13 @@ def update_circle_packing_plot(n):
     [Input('interval-component', 'n_intervals')]
 )
 def update_weekly_layoffs_plot(n):
-    fig = px.line(weekly_layoffs, x='Date', y='Laid_Off_Count', title=f"Weekly Total Layoffs", labels={'Laid_Off_Count': "Layoffs"})
-    fig.update_layout(uniformtext_minsize=8, uniformtext_mode='hide', xaxis_title=None)
+    fig = px.line(weekly_layoffs, x='Date', y='Laid_Off_Count', title=f"Total Layoffs over Time (Weekly Average)", labels={'Laid_Off_Count': "Layoffs"})
+    fig.update_layout(
+        uniformtext_minsize=8, 
+        uniformtext_mode='hide', 
+        xaxis_title=None,
+        yaxis_showgrid=False  # This line removes the y-axis gridlines
+    )
     return fig
 
 
